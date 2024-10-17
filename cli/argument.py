@@ -1,5 +1,6 @@
-import click
 from typing import Any
+
+import click
 
 
 class Argument:
@@ -8,12 +9,7 @@ class Argument:
     keyword arguments, and prompts.
     """
 
-    def __init__(
-        self,
-        *param_decls: str,
-        is_argument: bool = False,
-        **attrs: Any
-    ):
+    def __init__(self, *param_decls: str, is_argument: bool = False, **attrs: Any):
         """
         :param param_decls: Name of the argument.
         :param is_argument: Data type of the argument (default: str).
@@ -28,7 +24,11 @@ class Argument:
         Apply the argument or option to the Click decorator based on its configuration.
         """
         if self.is_argument:
-            click_decorator = click.argument(*self.param_decls, **self.attrs)(click_decorator)
+            click_decorator = click.argument(*self.param_decls, **self.attrs)(
+                click_decorator
+            )
         else:
-            click_decorator = click.option(*self.param_decls, **self.attrs)(click_decorator)
+            click_decorator = click.option(*self.param_decls, **self.attrs)(
+                click_decorator
+            )
         return click_decorator

@@ -1,3 +1,3 @@
-from .command import BaseCommand
-from .management import ManagementCommandSystem
-from .argument import Argument
+from .argument import Argument  # noqa F401
+from .command import BaseCommand  # noqa F401
+from .management import ManagementCommandSystem  # noqa F401

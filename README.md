@@ -1,6 +1,8 @@
-# FastAPI Commands Package
+[![Build](https://github.com/mhsiddiqui/cli-manager/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml)
 
-A FastAPI package that enables you to create and manage custom management commands, similar to Django's management system. This package uses Python's `click` to define, register, and execute commands for your FastAPI application dynamically.
+# Cli Manager
+
+A Python package that enables you to create and manage custom management commands, similar to Django's management system for FastAPI, Flask and other similar frameworks. This package uses Python's `click` to define, register, and execute commands for your application dynamically.
 
 ## Features
 
@@ -14,7 +16,7 @@ A FastAPI package that enables you to create and manage custom management comman
 Install the package via `pip`:
 
 ```bash
-pip install fastapi-commands
+pip install cli-manager
 ```
 
 ## Usage
@@ -26,20 +28,21 @@ To create a custom command, define a Python script in your project and subclass 
 ```python
 # src/scripts/mycommand.py
 
-from fastapi_commands import BaseCommand, Argument
+from cli import BaseCommand, Argument
 
 class Command(BaseCommand):
     def get_arguments(self):
         return [
-            Argument(name='arg1', type=str, required=True, is_positional=True),
-            Argument(name='arg2', type=int, required=False, is_positional=False, prompt="Enter value for arg2"),
+            Argument('arg1', is_argument=True),
+            Argument('--n', is_argument=False, type=int),
         ]
 
     def run(self, *args, **kwargs):
         print(f"Running command with args: {args}, kwargs: {kwargs}")
 ```
 
-In this example, we define a command that requires one argument (`arg1`) and accepts an optional second argument (`arg2`). These arguments are passed to the `run` method for further processing.
+To Argument class accept all the parameters which `click.Argument` and `click.Option` accept. By using `is_argument=True/False`, both type of argument can be differentiated.
+
 
 ### 2. Register Commands
 
@@ -51,10 +54,8 @@ In your main CLI runner file, use the `ManagementCommandSystem` to register and 
 from fastapi_commands import ManagementCommandSystem
 from fastapi import FastAPI
 
-app = FastAPI()
-
 # Initialize the management command system
-management_system = ManagementCommandSystem(app=app)
+management_system = ManagementCommandSystem()
 
 # Register all commands in the 'src.scripts' package
 management_system.register(package='src.scripts')
@@ -94,102 +95,25 @@ management_system.register(prefix='ext-', package='external_package.scripts')
 
 This way, all commands from `external_package` will be prefixed with `ext-`, avoiding any conflicts with similarly named commands in your project.
 
-### 5. Adding Arguments Dynamically
-
-The `get_arguments` method in `BaseCommand` allows each command to dynamically specify its own arguments. These are automatically added to the CLI when you register the command.
-
-Each argument is defined as a dictionary with the following keys:
-
-- `name`: The name of the argument.
-- `type`: The data type of the argument (e.g., `str`, `int`, etc.).
-- `required`: A boolean that indicates whether the argument is mandatory.
-
-### Example Command
-
 Here’s another example where you define a simple `greet` command:
 
-```python
-# src/scripts/greet.py
+### Example
 
-from fastapi_commands import BaseCommand
-
-class Command(BaseCommand):
-    def get_arguments(self):
-        return [
-            {'name': 'name', 'type': str, 'required': True},  # Required argument
-        ]
-
-    def run(self, name):
-        print(f"Hello, {name}!")
-```
-
-Run the command using:
+Example can be seen in example folder. This example can be run by running following command
 
 ```bash
-python cli_runner.py greet Alice
+python example_runner.py whats_my_name
 ```
 
-This will output:
+## Authors
+[@mhsiddiqui](https://github.com/mhsiddiqui)
 
-```bash
-Hello, Alice!
-```
+## Contributing
+Contributions are always welcome!
 
-## Testing
+Please read contributing.md to get familiar how to get started.
 
-To ensure the package works as expected, you can run tests using `pytest` or `tox` for multiple versions of Python and FastAPI.
+Please adhere to the project's code of conduct.
 
-### Setup Testing with `tox`
-
-Install `tox` if you haven't already:
-
-```bash
-pip install tox
-```
-
-Run the tests:
-
-```bash
-tox
-```
-
-### Example Test Case
-
-Here’s a sample test for command registration:
-
-```python
-# tests/test_management.py
-
-from fastapi_commands import BaseCommand, ManagementCommandSystem
-from fastapi import FastAPI
-
-def test_command_registration():
-    app = FastAPI()
-    system = ManagementCommandSystem(app)
-
-    class TestCommand(BaseCommand):
-        def get_arguments(self):
-            return [{'name': 'arg', 'type': str, 'required': True}]
-
-        def run(self, *args, **kwargs):
-            return "success"
-
-    system.register_command("test_command", TestCommand)
-    cli = system.create_cli()
-
-    result = cli.invoke(["test_command", "example"])
-    assert result.exit_code == 0
-    assert "success" in result.output
-```
-
-## Continuous Integration with GitHub Actions
-
-This package includes a GitHub Actions workflow to run tests automatically on multiple Python and FastAPI versions. The configuration can be found in `.github/workflows/ci.yml`.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-This version includes a more structured flow and better formatting to provide a clearer understanding of how to use the FastAPI commands package. Let me know if you need further modifications!
+Feedback And Support
+Please open an issue and follow the template, so the community can help you.

@@ -1,4 +1,7 @@
-from typing import List, Any
+from typing import Any, List
+
+from cli import Argument
+
 
 class BaseCommand:
     """Base class for defining custom commands."""
@@ -7,7 +10,7 @@ class BaseCommand:
         self.args = args
         self.kwargs = kwargs
 
-    def get_arguments(self) -> List[dict]:
+    def get_arguments(self) -> List[Argument]:
         """Override to define arguments."""
         return []
 
