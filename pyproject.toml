@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cli-manager"
+version = "0.1.0"
+description = "A management command system for FastAPI and Flask inspired by Django management commands."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+
+authors = [
+  {name = "Muhammad Hassan Siddiqi", email = "mhassan.eeng@gmail.com"}
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = ["click >= 8.0"]
+
+[tool.setuptools]
+packages = ["cli"]
+
+[project.urls]
+homepage = "https://github.com/mhsiddiqui/cmd-manager"
+repository = "https://github.com/mhsiddiqui/cmd-manager"
+"Bug Tracker" = "https://github.com/mhsiddiqui/cmd-manager/issues"
