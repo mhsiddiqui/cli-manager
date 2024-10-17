@@ -14,7 +14,6 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8, 3.9, "3.10", 3.11, 3.12]
-        fastapi-version: [0.78, 0.85, latest]
 
     steps:
       - name: Check out the repository
@@ -32,9 +31,9 @@ jobs:
 
       - name: Run tests with tox
         run: |
-          tox -e py${{ matrix.python-version }}-fastapi${{ matrix.fastapi-version }}
+          tox -e py${{ matrix.python-version }}
 
       - name: Display tox results
         if: failure()
         run: |
-          cat .tox/log/py${{ matrix.python-version }}-fastapi${{ matrix.fastapi-version }}/log
+          cat .tox/log/py${{ matrix.python-version }}/log
