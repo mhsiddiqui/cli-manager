@@ -1,5 +1,4 @@
-[![Build](https://github.com/mhsiddiqui/cli-manager/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml)
-
+[![Build](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml/badge.svg)](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml)
 # Cli Manager
 
 A Python package that enables you to create and manage custom management commands, similar to Django's management system for FastAPI, Flask and other similar frameworks. This package uses Python's `click` to define, register, and execute commands for your application dynamically.
