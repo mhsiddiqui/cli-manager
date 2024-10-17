@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="fastapi-commands",
+    name="cli-manager",
     version="0.1.0",
-    description="Management command system for FastAPI",
-    author="Your Name",
-    author_email="youremail@example.com",
+    description="A package to write management commands for FastAPI, Flask and other similar "
+                "frameworks using Python Click. Inspired by Django management commands",
+    author="Muhammad Hassan Siddiqui",
+    author_email="mhassan.eeng@gmail.com",
     packages=find_packages(exclude=["tests*"]),
     install_requires=[
         "click>=8.0",
