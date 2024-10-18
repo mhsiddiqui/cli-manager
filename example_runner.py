@@ -1,4 +1,4 @@
-from cli import ManagementCommandSystem
+from cmd_manager import ManagementCommandSystem
 
 system = ManagementCommandSystem()
 system.register(package="example.scripts")

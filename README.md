@@ -1,4 +1,4 @@
-[![Build](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml/badge.svg)](https://github.com/mhsiddiqui/cli-manager/actions/workflows/build.yml)
+[![Build](https://github.com/mhsiddiqui/cmd-manager/actions/workflows/build.yml/badge.svg)](https://github.com/mhsiddiqui/cmd-manager/actions/workflows/build.yml)
 # Cli Manager
 
 A Python package that enables you to create and manage custom management commands, similar to Django's management system for FastAPI, Flask and other similar frameworks. This package uses Python's `click` to define, register, and execute commands for your application dynamically.
@@ -15,7 +15,7 @@ A Python package that enables you to create and manage custom management command
 Install the package via `pip`:
 
 ```bash
-pip install cli-manager
+pip install cmd-manager
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ To create a custom command, define a Python script in your project and subclass 
 ```python
 # src/scripts/mycommand.py
 
-from cli_manager import BaseCommand, Argument
+from cmd_manager import BaseCommand, Argument
 
 class Command(BaseCommand):
     def get_arguments(self):
@@ -50,7 +50,7 @@ In your main CLI runner file, use the `ManagementCommandSystem` to register and 
 ```python
 # cli_runner.py
 
-from cli_manager import ManagementCommandSystem
+from cmd_manager import ManagementCommandSystem
 
 # Initialize the management command system
 management_system = ManagementCommandSystem()
