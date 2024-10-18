@@ -3,7 +3,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "cli-manager"
+name = "cmd-manager"
 version = "0.1.0"
 description = "A management command system for FastAPI and Flask inspired by Django management commands."
 readme = "README.md"

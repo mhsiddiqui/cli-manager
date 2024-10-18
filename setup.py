@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="cli-manager",
+    name="cmd-manager",
     version="0.1.0",
     description="""
     A package to write management commands for FastAPI,

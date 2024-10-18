@@ -3,7 +3,7 @@ import unittest
 import click
 from click.testing import CliRunner
 
-from cli_manager import Argument
+from cmd_manager import Argument
 
 
 class ArgumentTestCases(unittest.TestCase):
