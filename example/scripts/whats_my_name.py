@@ -2,7 +2,7 @@ from typing import List
 
 import click
 
-from cli import Argument, BaseCommand
+from cli_manager import Argument, BaseCommand
 
 
 class Command(BaseCommand):

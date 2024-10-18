@@ -2,7 +2,7 @@ import unittest
 
 from click.testing import CliRunner
 
-from cli import ManagementCommandSystem
+from cli_manager import ManagementCommandSystem
 
 
 class ManagementCommandSystemTestCases(unittest.TestCase):

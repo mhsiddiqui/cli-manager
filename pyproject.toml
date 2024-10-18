@@ -23,7 +23,7 @@ classifiers = [
 dependencies = ["click >= 8.0"]
 
 [tool.setuptools]
-packages = ["cli"]
+packages = ["cli_manager"]
 
 [project.urls]
 homepage = "https://github.com/mhsiddiqui/cmd-manager"

@@ -1,6 +1,6 @@
 from typing import Any, List
 
-from cli import Argument
+from cli_manager import Argument
 
 
 class BaseCommand:

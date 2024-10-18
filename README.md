@@ -27,7 +27,7 @@ To create a custom command, define a Python script in your project and subclass 
 ```python
 # src/scripts/mycommand.py
 
-from cli import BaseCommand, Argument
+from cli_manager import BaseCommand, Argument
 
 class Command(BaseCommand):
     def get_arguments(self):
@@ -50,8 +50,7 @@ In your main CLI runner file, use the `ManagementCommandSystem` to register and 
 ```python
 # cli_runner.py
 
-from fastapi_commands import ManagementCommandSystem
-from fastapi import FastAPI
+from cli_manager import ManagementCommandSystem
 
 # Initialize the management command system
 management_system = ManagementCommandSystem()

@@ -10,7 +10,7 @@ setup(
     """,
     author="Muhammad Hassan Siddiqui",
     author_email="mhassan.eeng@gmail.com",
-    packages=find_packages(exclude=["tests*"]),
+    packages=find_packages(exclude=["tests*", "example*"]),
     install_requires=["click>=8.0", "pytest>=7.0", "httpx>=0.23", "pytest-click>=1.0"],
     python_requires=">=3.7",
     classifiers=[
